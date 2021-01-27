@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{myCSS.css}">
+</head>
+<body>
+<h1>Here is  student info: </h1>
+<table>
+    <tr>
+        <th>Serial #</th>
+        <th>ID</th>
+        <th>NAME</th>
+    </tr>
+    <span th:each="s,c:${myStudents}">
+    <tr>
+        <td>
+            <p th:text="${c.count}"></p>
+        </td>
+        <td>
+            <p th:text="${s.id}">anyID</p>
+        </td>
+        <td>
+            <p th:text="${s.name}">Paul</p>
+        </td>
+    </tr>
+</span>
+</table>
+</body>
+</html>
