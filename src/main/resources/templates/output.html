@@ -12,8 +12,9 @@
         <th>Serial #</th>
         <th>ID</th>
         <th>NAME</th>
+        <th>PROGRAM</th>
     </tr>
-    <span th:each="s,c:${myStudents}">
+    <span th:each="s,c:${myStudentList}">
     <tr>
         <td>
             <p th:text="${c.count}"></p>
@@ -23,6 +24,9 @@
         </td>
         <td>
             <p th:text="${s.name}">Paul</p>
+        </td>
+        <td>
+            <p th:text="${s.program}">Paul</p>
         </td>
     </tr>
 </span>

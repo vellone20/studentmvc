@@ -12,14 +12,16 @@ import java.util.List;
 @Controller
 public class StudentController {
 
+    String programs[] = {"Network Engineer", "Computer Engineer", "System Analyst"};
+
     List<Student> students = new ArrayList<Student>();
 
-    @GetMapping("/")
+    @GetMapping(value={"/", "/index.do"})
     public String index(Model model){
 
         Student student = new Student();
         model.addAttribute("student", student);
-
+        model.addAttribute("programs", programs);
         return "input";
     }
 
@@ -45,15 +47,17 @@ public class StudentController {
     @GetMapping("/google")
     public String test() {
 
-        return ("redirect:http://www.google.ca"); //you can set a seperate url to go to
+        return ("redirect:http://www.google.ca"); //you can set a separate url to go to
     }
 
     @PostMapping("/processInput1")
     public ModelAndView display1(Model model, @ModelAttribute Student student){
+        //  ^ obj that holds name of view page and pass attributes that needs to be shared
 
-        ModelAndView modelAndView = new ModelAndView("output");
         students.add(student);
-        modelAndView.addObject("myStudents", "student");
+        ModelAndView modelAndView = new ModelAndView("output", "myStudentList", students);
+        //                                                                   ^obj you want to share
+
 
         return modelAndView;
     }
